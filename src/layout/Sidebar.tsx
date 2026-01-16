@@ -1,35 +1,3 @@
-// import { NavLink } from "react-router-dom";
-
-// const links = [
-//     { to: "/", label: "Dashboard" },
-//     { to: "/campaigns", label: "Campaigns" },
-//     { to: "/subscribers", label: "Subscribers" },
-//     { to: "/lists", label: "Lists" },
-//     { to: "/analytics", label: "Analytics" },
-// ];
-
-// export default function Sidebar() {
-//     return (
-//         <aside className="w-64 bg-black text-white hidden md:block">
-//             <div className="p-4 font-bold text-lg">Email Panel</div>
-//             <nav className="space-y-1">
-//                 {links.map((l) => (
-//                     <NavLink
-//                         key={l.to}
-//                         to={l.to}
-//                         className={({ isActive }) =>
-//                             `block px-4 py-2 ${isActive ? "bg-gray-800" : "hover:bg-gray-900"
-//                             }`
-//                         }
-//                     >
-//                         {l.label}
-//                     </NavLink>
-//                 ))}
-//             </nav>
-//         </aside>
-//     );
-// }
-
 import { NavLink } from "react-router-dom";
 import {
   Box,
@@ -44,22 +12,22 @@ import {
   Toolbar,
 } from "@mui/material";
 import {
-  DashboardOutlined,
-  SendOutlined,
-  PeopleOutlined,
-  ListAltOutlined,
-  BarChartOutlined,
-  EmailOutlined,
-} from "@mui/icons-material";
+  LayoutDashboard,
+  Send,
+  Users,
+  List as ListIcon,
+  BarChart,
+  Mail,
+} from "lucide-react";
 
 const drawerWidth = 260;
 
 const links = [
-  { to: "/", label: "Dashboard", icon: <DashboardOutlined /> },
-  { to: "/campaigns", label: "Campaigns", icon: <SendOutlined /> },
-  { to: "/subscribers", label: "Subscribers", icon: <PeopleOutlined /> },
-  { to: "/lists", label: "Lists", icon: <ListAltOutlined /> },
-  { to: "/analytics", label: "Analytics", icon: <BarChartOutlined /> },
+  { to: "/", label: "Dashboard", icon: <LayoutDashboard size={22} /> },
+  { to: "/campaigns", label: "Campaigns", icon: <Send size={22} /> },
+  { to: "/subscribers", label: "Subscribers", icon: <Users size={22} /> },
+  { to: "/lists", label: "Lists", icon: <ListIcon size={22} /> },
+  { to: "/analytics", label: "Analytics", icon: <BarChart size={22} /> },
 ];
 
 interface SidebarProps {
@@ -75,7 +43,7 @@ export default function Sidebar({
     <Box sx={{ height: "100%", bgcolor: "#111827", color: "white" }}>
       <Toolbar>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, px: 1 }}>
-          <EmailOutlined sx={{ color: "#3b82f6", fontSize: 28 }} />
+          <Mail color="#3b82f6" size={28} />
           <Typography
             variant="h6"
             sx={{ fontWeight: 800, letterSpacing: -0.5 }}

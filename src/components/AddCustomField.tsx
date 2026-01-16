@@ -39,7 +39,7 @@
 
 import { useState } from "react";
 import { Box, TextField, IconButton, Tooltip } from "@mui/material";
-import { AddCircleOutline } from "@mui/icons-material";
+import { PlusCircle } from "lucide-react";
 
 interface AddCustomFieldProps {
   onAdd: (key: string, value: string) => void;
@@ -81,7 +81,7 @@ export default function AddCustomField({ onAdd }: AddCustomFieldProps) {
           color="primary"
           disabled={!key || !value}
         >
-          <AddCircleOutline />
+          <PlusCircle />
         </IconButton>
       </Tooltip>
     </Box>

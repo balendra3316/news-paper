@@ -9,14 +9,14 @@ import {
   Avatar,
   Tooltip,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu"; // Import the Menu Icon
+import { Menu, LogOut } from "lucide-react"; // Import the Menu Icon
 import Sidebar from "./Sidebar";
 import { useAuth } from "../context/AuthContext";
 
 const drawerWidth = 260;
 
 export default function DashboardLayout() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // Function to toggle the sidebar
@@ -48,7 +48,7 @@ export default function DashboardLayout() {
               onClick={handleDrawerToggle}
               sx={{ mr: 2, display: { lg: "none" } }}
             >
-              <MenuIcon />
+              <Menu />
             </IconButton>
 
             <Typography
@@ -81,6 +81,12 @@ export default function DashboardLayout() {
               >
                 {user?.email?.charAt(0).toUpperCase()}
               </Avatar>
+            </Tooltip>
+
+            <Tooltip title="Logout">
+              <IconButton onClick={logout} sx={{ color: "error.main" }}>
+                <LogOut size={20} />
+              </IconButton>
             </Tooltip>
           </Box>
         </Toolbar>

@@ -10,7 +10,7 @@ import {
   Button,
   Stack,
 } from "@mui/material";
-import { ExpandMore, Edit, Save, Email } from "@mui/icons-material";
+import { ChevronDown, Edit2, Save, Mail } from "lucide-react";
 import { updateSubscriber } from "../../api/subscriber.api";
 import { useSnackbar } from "../../context/SnackbarContext";
 
@@ -43,9 +43,9 @@ export default function SubscriberCard({
       onChange={onToggle}
       className="shadow-sm border border-slate-100 rounded-lg overflow-hidden before:hidden"
     >
-      <AccordionSummary expandIcon={<ExpandMore />}>
+      <AccordionSummary expandIcon={<ChevronDown />}>
         <Box className="flex items-center gap-3">
-          <Email className="text-slate-400" />
+          <Mail className="text-slate-400" />
           <Box>
             <Typography className="font-bold text-slate-800">
               {subscriber.email}
@@ -92,7 +92,7 @@ export default function SubscriberCard({
 
           <Box className="flex justify-end gap-2 pt-4">
             {!isEditing ? (
-              <Button startIcon={<Edit />} onClick={() => setIsEditing(true)}>
+              <Button startIcon={<Edit2 />} onClick={() => setIsEditing(true)}>
                 Edit Details
               </Button>
             ) : (

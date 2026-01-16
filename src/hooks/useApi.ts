@@ -53,7 +53,6 @@ export default function useApi<T>(
     error: null,
   });
 
-  // Updated to allow passing a new function (useful for filtering/segmenting)
   const execute = useCallback(
     async (newApiFunc?: () => Promise<AxiosResponse<T>>) => {
       setState((prev) => ({ ...prev, loading: true, error: null }));

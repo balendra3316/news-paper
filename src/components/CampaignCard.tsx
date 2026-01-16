@@ -186,15 +186,7 @@ import {
   IconButton,
   Tooltip,
 } from "@mui/material";
-import {
-  Edit,
-  Delete,
-  Send,
-  Save,
-  Close,
-  EmailOutlined,
-  ListAltOutlined,
-} from "@mui/icons-material";
+import { Edit2, Trash2, Send, Save, X, Mail, List } from "lucide-react";
 import { updateCampaign, deleteCampaign } from "../api/campaign.api";
 import TemplateEditor from "./TemplateEditor";
 import { useSnackbar } from "../context/SnackbarContext";
@@ -344,13 +336,13 @@ export default function CampaignCard({
 
               <Box className="flex gap-4 items-center">
                 <Box className="flex items-center text-slate-500 gap-1">
-                  <ListAltOutlined fontSize="small" />
+                  <List size={20} />
                   <Typography variant="body2">
                     List: <b>{campaign.list?.name || "Unassigned"}</b>
                   </Typography>
                 </Box>
                 <Box className="flex items-center text-slate-500 gap-1">
-                  <EmailOutlined fontSize="small" />
+                  <Mail size={20} />
                   <Typography variant="body2">
                     Clicks: <b>{campaign.opened}</b>
                   </Typography>
@@ -372,7 +364,7 @@ export default function CampaignCard({
                 size="small"
                 className="hover:bg-red-50"
               >
-                <Delete />
+                <Trash2 />
               </IconButton>
             </Tooltip>
           </Box>
@@ -387,7 +379,7 @@ export default function CampaignCard({
                   }}
                   variant="text"
                   className="text-slate-500"
-                  startIcon={<Close />}
+                  startIcon={<X />}
                 >
                   Cancel
                 </Button>
@@ -410,7 +402,7 @@ export default function CampaignCard({
                     }}
                     variant="outlined"
                     className="border-slate-300 text-slate-700"
-                    startIcon={<Edit />}
+                    startIcon={<Edit2 />}
                   >
                     Edit
                   </Button>

@@ -42,6 +42,11 @@ describe("Subscribers Page", () => {
     expect(
       screen.getByRole("button", { name: /Add Subscriber/i })
     ).toBeInTheDocument();
+
+    // Wait for the async data fetch to complete to avoid "act" warnings
+    await waitFor(() => {
+      expect(screen.getByText("No subscribers found.")).toBeInTheDocument();
+    });
   });
 
   it("should display subscribers when api returns data", async () => {
@@ -102,6 +107,11 @@ describe("Subscribers Page", () => {
         <Subscribers />
       </BrowserRouter>
     );
+
+    // Wait for initial load to settle
+    await waitFor(() => {
+      expect(screen.getByText("No subscribers found.")).toBeInTheDocument();
+    });
 
     const addButton = screen.getByRole("button", { name: /Add Subscriber/i });
 

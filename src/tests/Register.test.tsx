@@ -35,34 +35,34 @@ describe("Register Unit Tests", () => {
   it("should show validation errors when fields are empty", async () => {
     renderPage();
 
-    // Exact match for the button text in your Register component
     const submitButton = screen.getByRole("button", {
       name: /Create Account/i,
     });
 
     await userEvent.click(submitButton);
 
-    // findByText waits for the async Zod validation to finish
-    // We check for the specific strings in your zod schema
-    expect(await screen.findByText(/Name is required/i)).toBeInTheDocument();
+    // FIX: Using ^ and $ anchors to ensure exact matches.
+    // This prevents "Name is required" from matching "Organization name is required".
+    expect(await screen.findByText(/^Name is required$/i)).toBeInTheDocument();
+
     expect(
       await screen.findByText(/Invalid email address/i)
     ).toBeInTheDocument();
+
     expect(
-      await screen.findByText(/Organization name is required/i)
+      await screen.findByText(/^Organization name is required$/i)
     ).toBeInTheDocument();
+
     expect(
       await screen.findByText(/Password must be at least 6 characters/i)
     ).toBeInTheDocument();
   });
 
   it("should call registerApi with correct data and navigate to login", async () => {
-    // Setup mock to return a fake axios response
     (authApi.registerApi as any).mockResolvedValue({ data: { success: true } });
 
     renderPage();
 
-    // Use userEvent to fill out the form
     await userEvent.type(screen.getByLabelText(/Full Name/i), "John Doe");
     await userEvent.type(
       screen.getByLabelText(/Email Address/i),
@@ -89,3 +89,5 @@ describe("Register Unit Tests", () => {
     });
   });
 });
+
+// npx vitest src/tests/Register.test.tsx --run

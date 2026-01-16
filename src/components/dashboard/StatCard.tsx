@@ -1,5 +1,5 @@
 import { Card, CardContent, Typography, Skeleton, Box } from "@mui/material";
-import { ArrowForwardIos } from "@mui/icons-material";
+import { ChevronRight } from "lucide-react";
 
 interface StatCardProps {
   title: string;
@@ -8,7 +8,12 @@ interface StatCardProps {
   onClick: () => void;
 }
 
-export default function StatCard({ title, value, loading, onClick }: StatCardProps) {
+export default function StatCard({
+  title,
+  value,
+  loading,
+  onClick,
+}: StatCardProps) {
   return (
     <Card
       onClick={onClick}
@@ -31,7 +36,7 @@ export default function StatCard({ title, value, loading, onClick }: StatCardPro
               </Typography>
             )}
           </div>
-          <ArrowForwardIos className="text-slate-300 group-hover:text-black transition-colors text-sm mt-2" />
+          <ChevronRight className="text-slate-300 group-hover:text-black transition-colors text-sm mt-2" />
         </Box>
       </CardContent>
     </Card>
